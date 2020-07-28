@@ -1,7 +1,7 @@
 void loop() {
   if (radio.available())
   {
-    String data = radio.readString();
+    String data = radio.readStringUntil(10);
 
     if (!data.startsWith("[WD]:")) {
       return;
@@ -15,7 +15,7 @@ void loop() {
 
     data.replace("[WD]:", "");
 
-    DynamicJsonDocument doc(capacity);
+    StaticJsonDocument<capacity> doc;
     deserializeJson(doc, data);
 
     handleHeaders();
