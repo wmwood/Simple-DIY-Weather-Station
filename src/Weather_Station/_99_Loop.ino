@@ -17,6 +17,7 @@ void readAndSendData(Stream* client)
   doc["t"] = temp;
   doc["h"] = hum;
   doc["p"] = pres;
+  doc["d"] = EnvironmentCalculations::DewPoint(temp, hum, tempUnit);
 
   String data = "[WD]:";
   serializeJson(doc, data);

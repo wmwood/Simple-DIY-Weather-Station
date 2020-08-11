@@ -16,5 +16,5 @@ void setup() {
   oled.clear();
 
   drawHeader();
-  drawWelcome();
+  drawConnecting();
 }

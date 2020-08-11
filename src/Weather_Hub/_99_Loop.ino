@@ -1,3 +1,4 @@
+
 void loop() {
   if (radio.available())
   {
@@ -20,15 +21,24 @@ void loop() {
 
     handleHeaders();
 
-    drawData(doc["t"], doc["h"], doc["p"], calculateGPP(doc["t"], doc["h"]));
+    drawData(doc["t"], doc["h"], doc["p"], doc["d"]);
 
     digitalWrite(LED_BUILTIN, LOW);
+
+    lastUpdatedMillis = millis();
+  }
+  else {
+    if  ((millis() - lastUpdatedMillis) >= 5000 && !LabelsHidden) {
+      clearBody();
+      drawConnecting();
+      LabelsHidden = true;
+    }
   }
 }
 
 void handleHeaders() {
   if (LabelsHidden) {
-    clearWelcome();
+    clearBody();
     drawLabels();
     LabelsHidden = false;
   }

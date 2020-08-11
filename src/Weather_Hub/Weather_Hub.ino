@@ -15,4 +15,4 @@ SoftwareSerial radio = SoftwareSerial(9, 7);
 
 // JSON
 #include <ArduinoJson.h>
-const size_t capacity = JSON_OBJECT_SIZE(3) + 10;
+const size_t capacity = JSON_OBJECT_SIZE(4) + 10;

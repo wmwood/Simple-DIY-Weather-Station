@@ -1,4 +1,5 @@
 bool LabelsHidden = true;
+unsigned long lastUpdatedMillis = 0;
 
 void drawHeader() {
   int leftMargin = (oled.displayWidth() - oled.strWidth(HUB_NAME)) / 2;
@@ -7,16 +8,14 @@ void drawHeader() {
   oled.println(HUB_NAME);
 }
 
-void drawWelcome() {
+void drawConnecting() {
   oled.setCursor(0, 4);
-  oled.set2X();
-  oled.print("Loading...");
+  oled.set1X();
+  oled.print("Connecting...");
 }
 
-void clearWelcome() {
-  oled.setCursor(0, 4);
-  oled.set2X();
-  oled.clearToEOL();
+void clearBody() {
+  oled.clear(0, 128, 2, 62);
 }
 
 void drawLabels() {
@@ -32,10 +31,10 @@ void drawLabels() {
   oled.print("P:");
 
   oled.setCursor(0, 6);
-  oled.print("G:");
+  oled.print("D:");
 }
 
-void drawData(int temperature, int humidity, float pressure, int gpp) {
+void drawData(int temperature, int humidity, float pressure, int dew) {
   oled.set2X();
 
   oled.setCursor(12, 2);
@@ -51,6 +50,6 @@ void drawData(int temperature, int humidity, float pressure, int gpp) {
   oled.print("in     ");
 
   oled.setCursor(12, 6);
-  oled.print(gpp);
-  oled.print("     ");
+  oled.print(dew);
+  oled.print("F ");
 }

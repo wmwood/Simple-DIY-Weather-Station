@@ -2,6 +2,7 @@
 #include <Wire.h>
 
 // BME280
+#include <EnvironmentCalculations.h>
 #include <BME280I2C.h>
 BME280I2C bme;
 
@@ -11,4 +12,4 @@ SoftwareSerial radio = SoftwareSerial(9, 7);
 
 // JSON
 #include <ArduinoJson.h>
-const size_t capacity = JSON_OBJECT_SIZE(3);
+const size_t capacity = JSON_OBJECT_SIZE(4);
